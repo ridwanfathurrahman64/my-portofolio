@@ -1,12 +1,13 @@
-/* Pengaturan Umum */
+/* Pengaturan Variabel */
 :root {
     --primary-blue: #1a3a5f;
     --emerald-green: #27ae60;
     --dark-navy: #0d1b2a;
-    --light-gray: #f8f9fa;
     --white: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.85);
 }
 
+/* Reset Standar */
 * {
     margin: 0;
     padding: 0;
@@ -18,261 +19,190 @@ body {
     background-color: var(--white);
     color: #333;
     line-height: 1.6;
-    scroll-behavior: smooth;
+    overflow-x: hidden; /* Mencegah scroll samping di HP */
 }
 
-span {
-    color: var(--emerald-green);
-}
+span { color: var(--emerald-green); }
 
-/* Navigasi */
+/* Navigasi Utama */
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Menjaga logo dan menu tetap satu garis lurus secara vertikal */
     padding: 1.2rem 10%;
-    background: var(--primary-blue); 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: #2c3e50; 
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: 'Playfair Display', serif;
-    color: white;
-}
-
+/* Kunci utama agar tidak seperti tangga */
 .nav-links {
-    display: flex;
-    list-style: none;
+    display: flex;         /* Mengubah list menjadi baris */
+    list-style: none;      /* Menghilangkan titik bullet */
+    margin: 0;
+    padding: 0;
+    align-items: center;   /* Menjajar teks di tengah */
 }
 
 .nav-links li {
-    margin-left: 25px;
+    margin-left: 25px;     /* Memberi jarak antar menu */
+    display: inline-block; /* Memastikan elemen tetap dalam satu baris */
 }
 
 .nav-links a {
     text-decoration: none;
     color: #ecf0f1;
+    font-weight: 400;
     transition: 0.3s;
 }
 
-.nav-links a:hover {
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    white-space: nowrap; /* Mencegah logo terlipat */
+}
+
+.nav-links a:hover, .nav-links a.active {
     color: var(--emerald-green);
 }
 
-/* Hero Section */
+/* --- HERO SECTION RESPONSIVE --- */
 .hero {
-    height: 75vh;
+    min-height: 75vh;
     background: linear-gradient(135deg, var(--primary-blue) 0%, #2ecc71 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
+    padding: 40px 20px;
 }
 
-.hero-content {
-    max-width: 900px;
-    padding: 0 20px;
-}
+.hero-content { max-width: 850px; }
 
 .hero-subtitle {
     text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
     margin-bottom: 10px;
-    color: rgba(255,255,255,0.9);
+    color: var(--text-muted);
 }
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Font adaptif otomatis */
     line-height: 1.2;
     margin-bottom: 20px;
 }
 
 .hero h1 span {
-    color: var(--white);
+    color: white;
     border-bottom: 4px solid var(--emerald-green);
 }
 
-.hero-description {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-/* Tombol */
+/* --- TOMBOL --- */
 .btn-primary {
     display: inline-block;
-    padding: 15px 40px;
+    padding: 14px 35px;
     background-color: var(--emerald-green);
     color: white;
     text-decoration: none;
     border-radius: 50px;
-    transition: 0.3s;
     font-weight: 600;
-    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    background-color: #219150;
-}
-
-.btn-primary.small {
-    padding: 10px 25px;
-    font-size: 0.9rem;
-}
+.btn-primary:hover { transform: translateY(-3px); background: #219150; }
 
 .btn-outline {
     display: inline-block;
-    padding: 12px 35px;
+    padding: 12px 30px;
     border: 2px solid white;
     color: white;
     text-decoration: none;
     border-radius: 50px;
-    font-weight: 600;
     transition: 0.3s;
 }
 
-.btn-outline:hover {
-    background: white;
-    color: var(--primary-blue);
-}
+.btn-outline:hover { background: white; color: var(--primary-blue); }
 
-/* Container & Grid */
+/* --- KONTEN & GRID --- */
 .container {
     max-width: 1100px;
-    margin: 60px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 60px 20px;
 }
 
 .section-title {
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 40px;
     color: var(--primary-blue);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
 .card {
     background: white;
-    padding: 40px;
+    padding: 35px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
     text-align: center;
     border-top: 5px solid var(--emerald-green);
     transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-}
+.card:hover { transform: translateY(-8px); }
 
-.card-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-/* Featured Section */
-.featured-section {
-    background-color: #e8f5e9;
-    padding: 80px 0;
-}
+/* --- FEATURED SECTION --- */
+.featured-section { background: #f0f7f4; }
 
 .featured-card {
+    display: flex;
+    flex-wrap: wrap; /* Agar elemen turun di HP */
     background: white;
     border-radius: 20px;
     overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.featured-image {
-    background: var(--primary-blue);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+.featured-image, .featured-content {
+    flex: 1 1 350px;
+    padding: 45px;
 }
 
-.icon-large {
-    font-size: 5rem;
-}
+.featured-image { background: var(--primary-blue); color: white; text-align: center; font-size: 5rem; }
 
-.featured-content {
-    padding: 40px;
-}
+/* --- ABOUT TEASER & QUOTE --- */
+.about-teaser { background: var(--primary-blue); color: white; text-align: center; padding: 80px 20px; }
+.quote-section { text-align: center; padding: 80px 20px; }
+.quote-text { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary-blue); }
 
-.tag {
-    color: var(--emerald-green);
-    font-weight: 700;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
+/* --- FOOTER --- */
+footer { background: var(--dark-navy); color: white; text-align: center; padding: 40px 0; }
 
-/* About Teaser */
-.about-teaser {
-    background: var(--primary-blue);
-    color: white;
-    padding: 80px 0;
-    text-align: center;
-}
-
-.about-teaser h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.about-teaser p {
-    margin-bottom: 30px;
-    opacity: 0.8;
-}
-
-/* Quote */
-.quote-section {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.quote-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: var(--primary-blue);
-    max-width: 800px;
-    margin: 0 auto;
-    display: block;
-}
-
-.quote-author {
-    margin-top: 20px;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-/* Footer */
-footer {
-    padding: 50px 0;
-    background: var(--dark-navy);
-    color: white;
-    text-align: center;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .featured-card { grid-template-columns: 1fr; }
+    .navbar {
+        flex-direction: column; /* Logo di atas, menu di bawah */
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 15px;      /* Jarak antara logo dan menu di HP */
+        flex-wrap: wrap;       /* Agar menu tidak keluar layar jika terlalu panjang */
+        justify-content: center;
+    }
+
+    .nav-links li {
+        margin: 5px 10px;      /* Jarak menu yang lebih rapat untuk layar kecil */
+    }
 }
