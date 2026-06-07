@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Fathur Corner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_coba.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -16,6 +17,7 @@
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
     </nav>
 
     <main class="container">
@@ -39,37 +41,80 @@
         </section>
 
         <section class="social-section">
-            <h2 class="section-title">Atau Terhubung Melalui <span>Media Sosial</span></h2>
-            <div class="social-grid">
-                <a href="https://linkedin.com" target="_blank" class="social-card">
-                    <span class="social-icon">💼</span>
-                    <h3>LinkedIn</h3>
-                    <p>Professional Network</p>
-                </a>
-                <a href="https://github.com/ridwanfathurrahman64" target="_blank" class="social-card">
-                    <span class="social-icon">💻</span>
-                    <h3>GitHub</h3>
-                    <p>Portfolio & Projects</p>
-                </a>
-                <a href="https://www.instagram.com/fathurrmnid?igsh=czdzbG1yYzJneDN5" target="_blank" class="social-card">
-                    <span class="social-icon">📸</span>
-                    <h3>Instagram</h3>
-                    <p>Daily Updates</p>
-                </a>
-                <a href="https://wa.me/6282223419252" target="_blank" class="social-card">
-                    <span class="social-icon">💬</span>
-                    <h3>WhatsApp</h3>
-                    <p>Chat Langsung</p>
-                </a>
-                <a href="mailto:ridwanfathurrahman11@gmail.com" class="social-card">
-                    <span class="social-icon">✉️</span>
-                    <h3>Email</h3>
-                    <p>Kirim Email</p>
-                </a>
+            <div class="container">
+                <h2 class="section-title">Atau Terhubung Melalui <span>Media Sosial</span></h2>
+                <div class="social-grid">
+                    <a href="https://linkedin.com" target="_blank" class="social-card">
+                        <span class="social-icon"><i class="fab fa-linkedin"></i></span>
+                        <h3>LinkedIn</h3>
+                        <p>Professional Network</p>
+                    </a>
+                    <a href="https://github.com/ridwanfathurrahman64" target="_blank" class="social-card">
+                        <span class="social-icon"><i class="fab fa-github"></i></span>
+                        <h3>GitHub</h3>
+                        <p>Portfolio & Projects</p>
+                    </a>
+                    <a href="https://www.instagram.com/fathurrmnid?igsh=czdzbG1yYzJneDN5" target="_blank" class="social-card">
+                        <span class="social-icon"><i class="fab fa-instagram"></i></span>
+                        <h3>Instagram</h3>
+                        <p>Daily Updates</p>
+                    </a>
+                    <a href="https://wa.me/6282223419252" target="_blank" class="social-card">
+                        <span class="social-icon"><i class="fab fa-whatsapp"></i></span>
+                        <h3>WhatsApp</h3>
+                        <p>Chat Langsung</p>
+                    </a>
+                    <a href="mailto:ridwanfathurrahman11@gmail.com" class="social-card">
+                        <span class="social-icon"><i class="fas fa-envelope"></i></span>
+                        <h3>Email</h3>
+                        <p>Kirim Email</p>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer><p>&copy; 2026 <strong>Fathur<span>Corner</span></strong></p></footer>
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 <strong>Fathur<span>Corner</span></strong>. Menghubungkan Data & Teknologi.</p>
+            <div class="social-links">
+                <a href="https://github.com/ridwanfathurrahman64" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DARK MODE TOGGLE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+        themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // ===== BACK TO TOP BUTTON =====
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
