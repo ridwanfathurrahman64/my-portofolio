@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | Fathur Corner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_coba.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -13,39 +14,40 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="project.html">Projects</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html" class="active">About</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
     </nav>
 
     <main class="container">
-        <h2 class="section-title">Tentang <span>Saya</span></h2>
-        
-        <div class="about-grid">
+        <header class="page-header">
+            <h1 class="section-title">Tentang <span>Saya</span></h1>
+            <p class="section-intro">Saya menggabungkan data dan desain web untuk menyajikan wawasan statistik dengan tampilan profesional dan mudah dipahami.</p>
+        </header>
+
+        <section class="about-grid">
             <div class="profile-card">
-                <img src="https://via.placeholder.com/150" alt="Fathur" class="profile-img">
-                <h3 style="margin: 0;">Fathur</h3>
-                <p style="color: #e74c3c; font-weight: 600;">Statistisi & Web Enthusiast</p>
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-                <p style="font-size: 0.9rem; color: #7f8c8d;">Yogyakarta, Indonesia</p>
+                <img src="https://via.placeholder.com/200" alt="Fathur" class="profile-img">
+                <h3>Fathur</h3>
+                <p class="profile-role">Statistisi & Web Enthusiast</p>
+                <div class="profile-meta">
+                    <span>Yogyakarta, Indonesia</span>
+                </div>
             </div>
 
             <div class="about-text">
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #444;">
-                    "Halo! Saya <strong>Fathur</strong>, seorang mahasiswa statistika yang antusias dalam mengubah data mentah menjadi wawasan yang bermakna dan membangun pengalaman web yang interaktif."
-                </p>
-                <p style="color: #666; margin-top: 10px;">
-                    Fokus saya saat ini adalah belajar tentang analisis data dan melakukan pengembangan web sederhana untuk analisis statistik deskriptif pada data sosial-ekonomi.
-                </p>
+                <p>"Halo! Saya <strong>Fathur</strong>, seorang mahasiswa statistika yang antusias dalam mengubah data mentah menjadi wawasan yang bermakna dan membangun pengalaman web yang interaktif."</p>
+                <p>Fokus saya saat ini adalah belajar tentang analisis data dan membangun solusi web sederhana untuk memperkuat pemahaman statistik dan visualisasi sosial-ekonomi.</p>
 
                 <h3>Pendidikan</h3>
                 <div class="education-box">
-                    <h4 style="margin: 0; color: #2c3e50;">Universitas Islam Indonesia</h4>
-                    <p style="margin: 5px 0 0; color: #555;">Strata 1 (S1) - Program Studi Statistika</p>
+                    <h4>Universitas Islam Indonesia</h4>
+                    <p>Strata 1 (S1) - Program Studi Statistika</p>
                 </div>
 
                 <h3>Keahlian Teknis</h3>
-                <p style="font-weight: 600; margin-bottom: 10px;">Data & Statistik:</p>
+                <p class="section-subtitle">Data & Statistik:</p>
                 <div class="skill-container">
                     <span class="skill-tag">R Programming</span>
                     <span class="skill-tag">Excel (Uji T & Regresi)</span>
@@ -53,7 +55,7 @@
                     <span class="skill-tag">SQL</span>
                 </div>
 
-                <p style="font-weight: 600; margin: 15px 0 10px;">Web Development:</p>
+                <p class="section-subtitle">Web Development:</p>
                 <div class="skill-container">
                     <span class="skill-tag">HTML5 & CSS3</span>
                     <span class="skill-tag">JavaScript (Basic)</span>
@@ -61,9 +63,50 @@
                     <span class="skill-tag">XAMPP</span>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <footer><p>&copy; 2026 Fathur Corner</p></footer>
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 <strong>Fathur<span>Corner</span></strong>. Menghubungkan Data & Teknologi.</p>
+            <div class="social-links">
+                <a href="https://github.com/ridwanfathurrahman64" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DARK MODE TOGGLE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+        themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // ===== BACK TO TOP BUTTON =====
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
